@@ -4,7 +4,7 @@
   "description": "node_elasticSearch",
   "main": "index.js",
   "scripts": {
-    "start": "node src/server/url_processing.js",
+    "start": "node src/server/index.js",
     "postinstall": "./node_modules/bower/bin/bower install",
     "prestart": "npm install"
   },
