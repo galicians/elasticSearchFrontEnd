@@ -37,7 +37,3 @@
     - http://www.johnpapa.net/angular-app-structuring-guidelines/
     - https://docs.google.com/document/d/1XXMvReO8-Awi1EZXAXS4PzDzdNvV6pGcuaF4Q9821Es/pub
     - http://hbay71.axshare.com/#p=pablo_-_demo&c=1
-
-    ![alt tag](https://github.com/galicians/elasticSearchFrontEnd/blob/master/documentation/mobile.png)
-    ![alt tag](https://github.com/galicians/elasticSearchFrontEnd/blob/master/documentation/karma.png)
-    ![alt tag]https://github.com/galicians/elasticSearchFrontEnd/blob/master/documentation/protractor.png
