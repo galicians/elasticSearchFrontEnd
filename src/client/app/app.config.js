@@ -16,3 +16,6 @@ angular.module('signal').config(['$locationProvider', '$urlRouterProvider', '$st
         });
 
     }]);
+
+angular.module('signal')
+    .constant('ELASTIC_URL', 'http://localhost:9200/');

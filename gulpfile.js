@@ -5,7 +5,7 @@ var config = require('./gulp.config')();
 var del = require('del');
 var path = require('path');
 var _ = require('lodash');
-var angularFilesort = require('gulp-angular-filesort')
+var angularFilesort = require('gulp-angular-filesort');
 var $ = require('gulp-load-plugins')({lazy: true});
 var port = process.env.PORT || config.defaultPort;
 /* jshint -W117, -W030 */
@@ -160,8 +160,8 @@ gulp.task('build-specs', ['templatecache'], function() {
         .pipe($.inject(gulp.src(config.testlibraries),
             {name: 'inject:testlibraries', read: false}))
         .pipe($.inject(gulp.src(config.js)))
-        .pipe($.inject(gulp.src(config.specHelpers),
-            {name: 'inject:spechelpers', read: false}))
+        // .pipe($.inject(gulp.src(config.specHelpers),
+        //     {name: 'inject:spechelpers', read: false}))
         .pipe($.inject(gulp.src(specs),
             {name: 'inject:specs', read: false}))
         .pipe($.inject(gulp.src(config.temp + config.templateCache.file),
@@ -242,11 +242,11 @@ gulp.task('serve-dev', ['inject'], function() {
     serve(true /* isDev */);
 });
 
-gulp.task('test', ['vet', 'templatecache'], function(done) {
+gulp.task('test', [], function(done) {
     startTests(true /* singleRun */, done);
 });
 
-gulp.task('autotest', ['vet', 'templatecache'], function(done) {
+gulp.task('autotest', [], function(done) {
     startTests(false /* singleRun */, done);
 });
 
@@ -349,22 +349,24 @@ function startTests(singleRun, done) {
     var fork = require('child_process').fork;
     var karma = require('karma').server;
     var excludeFiles = [];
-    var serverSpecs = config.serverIntegrationSpecs; //TODO
-
-    if (args.startServers) { // gulp test --startServers
-        log('Starting server');
-        var savedEnv = process.env;
-        savedEnv.NODE_ENV = 'dev';
-        savedEnv.PORT = 8888;
-        child = fork(config.nodeServer);
-    } else {
-        if (serverSpecs && serverSpecs.length) {
-            excludeFiles = serverSpecs;
-        }
-    }
+    var serverSpecs;
+    // var serverSpecs = config.serverIntegrationSpecs; //TODO
+    log('startServersstartServersstartServersstartServersstartServersstartServers');
+    // log('argsargs', args.startServers);
+    // if (args.startServers) { // gulp test --startServers
+    //     log('Starting server');
+    var savedEnv = process.env;
+    savedEnv.NODE_ENV = 'dev';
+    savedEnv.PORT = 8888;
+    child = fork(config.nodeServer);
+    // } else {
+    //     if (serverSpecs && serverSpecs.length) {
+    //         excludeFiles = serverSpecs;
+    //     }
+    // }
 
     karma.start({
-        configFile: __dirname + '/karma.conf.js',
+        config: __dirname + '/karma.conf.js',
         exclude: excludeFiles,
         singleRun: !!singleRun
     }, karmaCompleted);

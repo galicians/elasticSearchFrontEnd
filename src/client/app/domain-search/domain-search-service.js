@@ -1,45 +1,39 @@
 
-angular.module('signal').factory('elasticSrvc', ['$q', '$location', 'esFactory',
-    function($q, $location, elasticsearch) {
+angular.module('domain-search').factory('elasticSrvc', ['$q', '$http', 'ELASTIC_URL',
+    function($q, $http, ELASTIC_URL) {
 
-        var client = elasticsearch({
-            host: $location.host() + ':9200'
-        });
-
-        var search = function(term) {
-            var deferred = $q.defer();
-            var query = {
-                match: {
-                    _all: term
-                }
-            };
-
-            client.search({
-                index: 'urls',
-                type: 'url',
-                body: {
-                    size: 100,
-                    from: 0,
-                    query: query
-                }
-            }).then(function(result) {
-                var hitsIn;
-                var hitsOut = [];
-
-                hitsIn = (result.hits || {}).hits || [];
-
-                for (var i = 0; i < hitsIn.length; i++) {
-                    hitsOut.push(hitsIn[i]._source);
-                }
-
-                deferred.resolve(hitsOut);
-            }, deferred.reject);
-
-            return deferred.promise;
-        };
+        var searchURL = ELASTIC_URL + 'urls/url/_search'
+        var hitsOut =[];
 
         return {
-            search: search
-        };
+            searchQuery: function(term) {
+                var deferred = $q.defer();
+                var bodySearch = {query :
+                    {match: {
+                            _all: term
+                        }
+                    }
+                };
+
+                $http({method: 'POST', url: searchURL, data: bodySearch})
+                    .success(function(response) {
+                        var hitsIn;
+                        
+                        hitsIn = (response.hits || {}).hits || [];
+
+                        for (var i = 0; i < hitsIn.length; i++) {
+                            hitsOut.push(hitsIn[i]._source);
+                        }
+
+                        deferred.resolve(hitsOut);
+                    })
+                    .error(function(response, status) {
+                        deferred.reject(response, status);
+                    });
+                return deferred.promise;
+
+            },
+            hitsOut : hitsOut
+        }
     }
 ]);

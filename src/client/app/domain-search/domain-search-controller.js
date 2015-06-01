@@ -1,4 +1,4 @@
-angular.module('signal').controller('elasticCtrl', ['$scope', 'elasticSrvc', '$location',
+angular.module('domain-search').controller('elasticCtrl', ['$scope', 'elasticSrvc', '$location',
     function($scope, elasticSrvc, $location) {
 
         var initChoices = [
@@ -6,6 +6,7 @@ angular.module('signal').controller('elasticCtrl', ['$scope', 'elasticSrvc', '$l
           'branding',
           'analytics'
         ];
+
         var randPick = Math.floor(Math.random() * initChoices.length);
 
         $scope.urls = [];
@@ -19,10 +20,8 @@ angular.module('signal').controller('elasticCtrl', ['$scope', 'elasticSrvc', '$l
         };
 
         $scope.loadResults = function() {
-            elasticSrvc.search($scope.searchTerm).then(function(results) {
-                for (var i = 0; i < results.length; i++) {
-                    $scope.urls.push(results[i]);
-                }
+            elasticSrvc.searchQuery($scope.searchTerm).then(function(results) {
+                $scope.urls = elasticSrvc.hitsOut;
             });
         };
 

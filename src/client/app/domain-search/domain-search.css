@@ -1,0 +1,190 @@
+/*General*/
+body {
+    font-family: "PT Sans"; 
+    line-height: 1.8em;
+}
+a {
+    text-decoration: none;
+}
+span {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+}
+
+/*Mobile*/
+.main {
+    width: 98%;
+    margin: 0 10px 0 10px;
+}
+.signal-logo {
+    background-color: #21282c;
+    width: 16%;
+    text-align: center;
+    display: inline-block;
+    margin: 32px 16px;
+}
+.signal-logo span {
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 34px;
+    text-shadow: 1px #fff;
+}
+.google-rank, 
+    .source {
+        font-size: 18px;
+        margin-top: -7px;
+        margin-left: 8px;
+    }
+.google-rank {
+        color: #0e8ad2;
+    }
+.wordcount-header {
+    background-color: #3aa497;
+    display: block;
+    overflow: hidden;
+    text-align: center;
+}
+.wordcount-header .specific-word,
+  .specific-count {
+    display: inline-block;
+    color: white;
+    font-weight: bold;
+
+}
+.wordcount-header .specific-word {
+    float: left;
+    margin-left: 40px;
+}
+.search {
+    margin-top: 8px;
+    width: 100%;
+    height: 90px;
+    background-color: #21282c;
+}
+.search .search-bar {
+    margin: 22px 28px;
+    width: 45%;
+    float: right;
+    background-color: white;
+    height: 40px;
+    border-radius: 3px;
+}
+input {
+    background-color: white;
+    width: 100%;
+    height: 38px;
+    border-style: none;
+    font-size: 1.2em;
+}
+input[type=search]:focus { 
+  outline: 0 none;
+}
+ul {
+    padding: 0;
+    width: 100%;
+}
+li {
+    list-style: none;
+    overflow: hidden;
+    background-color: #f3f3f3;
+}
+p {
+    font-size: 16px;
+    text-transform: capitalize;
+}
+.words-list {
+    float: left;
+    padding: 0 42px;
+}
+.count-list {
+    padding: 0 100px;
+    margin-bottom: 8px;
+}
+.click-to-visit {
+    background-color: #0e8ad2;
+    width: 100%;
+    height: 50px;
+    border-radius: 3px;
+    border-style: none;
+}
+
+/*Tablet*/
+@media only screen and (min-width: 768px) {
+    .search .search-bar {
+        width: 23%;
+        margin: 20px 406px;
+    }   
+    ul {
+        width: 50%;
+        margin-right: 200px;
+    }
+    .count-list {
+        padding: -26px 160px;
+        margin-bottom: 8px;
+    }
+    .wordcount-header .specific-count {
+    margin-right: 4px;
+  }
+  .search-for-keyw {
+    background-color: #353c41;
+    width: 62%;
+    display: inline-block;
+    float: right;
+    position: relative;
+    margin: -38px -127px;
+    border: 0;
+    padding: 0;
+    height: 40px;
+    border-radius: 3px;
+  }
+  .search .search-bar {
+        margin: 20px 204px;
+    }
+}
+
+/*Desktop*/
+@media screen and (min-width: 989px){
+    .count-list {
+        padding: 0 150px;
+    }
+    .wordcount-header .specific-count {
+    /*margin-right: 135px;*/
+  }
+    .click-to-visit {
+        width: 30%;
+    }
+    .google-rank,
+    .source {
+        margin: 40px 8px 2px 8px; 
+        font-size: 20px;
+    }
+    .google-rank {
+        margin-top: 8px;
+        margin-bottom: 20px;
+    }
+    .search-for-keyw {
+    background-color: #353c41;
+    width: 50%;
+    display: inline-block;
+    float: right;
+    position: relative;
+    border: 0;
+    padding: 0;
+    height: 40px;
+    border-radius: 3px;
+    margin: -38px -167px;
+  }
+    .signal-logo span {
+        font-size: 34px;;
+    }
+}
+@media screen and (max-width: 767px) {
+    .search-for-keyw {
+        display: none;
+    }
+    .wordcount-header .specific-count {
+        float: right;
+        margin-right: 84px;
+    }
+}

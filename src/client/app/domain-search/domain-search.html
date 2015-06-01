@@ -1,37 +1,35 @@
-  <div layout-margin layout-padding>
-    <div layout="row" layout-align="space-around start" >
-       <form ng-submit="search()">
-              <input type="text" ng-model="searchTerm">
-              <md-button class="md-raised md-warn" type="submit">Search for keywords</md-button>
-            </form>
-
-    <strong>Elastic Search App Demo</strong>
-
-    </div>
-
-   <div layout="row">
-        <section class="results">
-          <!-- <div ng-hide="urls.length">No results</div> -->
-      
-          <md-list>
-            <md-list-item ng-repeat="url in urls | orderBy:'rankpage'" ng-cloak>
-            <div layout="column">
-              <md-toolbar flex>
-                <div class="md-toolbar-tools md-primary">
-                  <h4 class="md-flex">{{url.url}}</h4>
-                </div>
-              </md-toolbar>
-              <md-subheader class="md-primary"><h3>GoogleRank: {{url.rankpage}} for {{url.keywords}}</h3></md-subheader>
-                  <li ng-repeat="word in url.words">{{word}}</li>
-                </ul>
-           
-                <p>
-                  <a ng-href="{{url.url}}">visit website</a>
-                </p>
-              <div>
-            </md-list-item>
-          </md-list>
-     
-      </section>
-    </div>
+<div class="search">
+  <div class="signal-logo">
+    <span class="signal-font"> signal </span>
   </div>
+  <div class="search-bar">
+       <form role="search" ng-submit="search()">
+            <input type="search" ng-model="searchTerm" placeholder="Search">
+            <button class="search-for-keyw" type="submit" id="search-button"> 
+              <span> Search for keywords </span>
+            </button>
+        </form>
+  </div>
+</div>
+
+<div class="main">
+  <ul ng-repeat="url in urls | orderBy:'rankpage'" ng-cloak>
+    <h3 class="source"> {{url.url}} </h3>
+    <h3 class="google-rank">GoogleRank: {{url.rankpage}} for {{url.keywords}}</h3>
+    <div class="wordcount-header">
+        <p class="specific-word"> word </p>
+        <p class="specific-count"> count </p>
+    </div>
+    <li class="words-list">
+        <p class="specific-word" ng-repeat="word in url.words">{{word.word}}</p>
+    </li>
+    <li class="count-list">
+        <p class="specific-word" ng-repeat="word in url.words">{{word.count}}</p>
+    </li>
+    <button class="click-to-visit"> 
+      <a href="{{url.url}}">
+        <span> Visit Site </span>
+      </a>
+    </button>
+  </ul>
+</div>

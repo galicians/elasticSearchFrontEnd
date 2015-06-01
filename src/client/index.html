@@ -8,16 +8,17 @@
     <base href="/">
 
     <!-- bower:css -->
-    <link rel="stylesheet" href="/bower_components/angular-material/angular-material.css" />
+
     <!-- endbower -->
     
     <!-- inject:css -->
-    
+     <link rel="stylesheet" href="/src/client/app/domain-search/domain-search.css" />
+     <link rel="stylesheet" href="/src/client/styles/style.css" />
     <!-- endinject -->
 </head>
 <body>
-    <div flex ui-view></div>
-    test 2
+    <div class="template" flex ui-view></div>
+
     <!-- bower:js -->
     <script src="/bower_components/angular/angular.js"></script>
     <script src="/bower_components/angular-mocks/angular-mocks.js"></script>
@@ -29,10 +30,10 @@
     <!-- endbower -->
 
     <!-- inject:js -->
-    <script src="/src/client/app/app.js"></script>
+    <script src="/src/client/app/domain-search/domain-search-app.module.js"></script>
     <script src="/src/client/app/domain-search/domain-search-service.js"></script>
     <script src="/src/client/app/domain-search/domain-search-controller.js"></script>
-    <script src="/src/client/app/domain-search/domain-search-app.js"></script>
+    <script src="/src/client/app/app.module.js"></script>
     <script src="/src/client/app/app.config.js"></script>
     <!-- endinject -->
 

@@ -20,7 +20,7 @@ module.exports = function() {
         build: './build/',
         client: client,
         css: temp + 'styles.css',
-        e2e: client + 'tests/e2e/*.spec.js',
+        e2e: client + 'e2e-tests/*.spec',
         fonts: './bower_components/font-awesome/fonts/**/*.*',
         html: clientApp + '**/*.html',
         htmltemplates: clientApp + '**/*.html',
@@ -91,8 +91,8 @@ module.exports = function() {
         /**
          * Karma and testing settings
          */
-        specHelpers: [client + 'test-helpers/*.js'],
-        serverIntegrationSpecs: [client + 'tests/integration-tests/*.js'],
+        // specHelpers: [client + 'test-helpers/*.js'],
+        // serverIntegrationSpecs: [client + 'tests/integration-tests/*.js'],
 
         /**
          * Node settings
@@ -121,11 +121,9 @@ module.exports = function() {
         var options = {
             files: [].concat(
                 bowerFiles,
-                config.specHelpers,
                 client + '**/*.module.js',
                 client + '**/*.js',
-                temp + config.templateCache.file,
-                config.serverIntegrationSpecs
+                temp + config.templateCache.file
             ),
             exclude: [],
             coverage: {
